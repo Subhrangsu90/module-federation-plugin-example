@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "start:all": "concurrently \"ng serve mfe1\" \"ng serve shell\"",
-    "build": "ng build",
+    "shell": "ng serve shell --configuration development --port 4200 -o",
+    "mfe1": "ng serve mfe1 --configuration development --port 4201 -o",
+    "start": "concurrently \"ng run mfe1:serve\" \"ng run shell:serve\"",
+    "build": "ng run shell:build && ng run mfe1:build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
